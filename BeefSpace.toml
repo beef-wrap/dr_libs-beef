@@ -1,0 +1,11 @@
+FileVersion = 1
+Projects = {example = {Path = "example"}, dr_flac = {Path = "dr_flac"}, dr_mp3 = {Path = "dr_mp3"}, dr_wav = {Path = "dr_wav"}}
+
+[Workspace]
+StartupProject = "example"
+
+[Configs.Test.Win32]
+ConfigSelections = {example = {Config = "Debug"}}
+
+[Configs.Test.Win64]
+ConfigSelections = {example = {Config = "Debug"}}

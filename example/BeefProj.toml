@@ -1,0 +1,9 @@
+FileVersion = 1
+Dependencies = {corlib = "*", dr_wav = "*", dr_flac = "*", dr_mp3 = "*"}
+
+[Project]
+Name = "example"
+StartupObject = "example.Program"
+
+[Configs.Debug.Win64]
+CLibType = "DynamicDebug"

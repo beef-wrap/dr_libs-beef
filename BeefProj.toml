@@ -1,0 +1,10 @@
+FileVersion = 1
+
+[Project]
+Name = "dr_wav-beef"
+TargetType = "BeefLib"
+StartupObject = "dr_libs_beef.Program"
+DefaultNamespace = "dr_libs_beef"
+
+[Configs.Debug.Win64]
+LibPaths = ["$(ProjectDir)/lib/windows/dr_libs.lib"]

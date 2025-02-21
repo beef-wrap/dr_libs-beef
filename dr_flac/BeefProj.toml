@@ -1,0 +1,9 @@
+FileVersion = 1
+
+[Project]
+Name = "dr_flac"
+TargetType = "BeefLib"
+StartupObject = "dr_flac.Program"
+
+[Configs.Debug.Win64]
+LibPaths = ["$(ProjectDir)/libs/dr_flac-windows.lib"]
