@@ -86,9 +86,9 @@ Build Options
 using System;
 using System.Interop;
 
-namespace DRLibs;
+namespace drlibs;
 
-public static class DRMp3
+public static class drmp3
 {
 	public typealias size_t = uint;
 	public typealias ssize_t = int;
@@ -111,64 +111,64 @@ public static class DRMp3
 	/* Result Codes */
 	public typealias drmp3_result = drmp3_int32;
 
-	const int DRMP3_SUCCESS =                        0;
-	const int DRMP3_ERROR =                         -1; /* A generic error. */
-	const int DRMP3_INVALID_ARGS =                  -2;
-	const int DRMP3_INVALID_OPERATION =             -3;
-	const int DRMP3_OUT_OF_MEMORY =                 -4;
-	const int DRMP3_OUT_OF_RANGE =                  -5;
-	const int DRMP3_ACCESS_DENIED =                 -6;
-	const int DRMP3_DOES_NOT_EXIST =                -7;
-	const int DRMP3_ALREADY_EXISTS =                -8;
-	const int DRMP3_TOO_MANY_OPEN_FILES =           -9;
-	const int DRMP3_INVALID_FILE =                  -10;
-	const int DRMP3_TOO_BIG =                       -11;
-	const int DRMP3_PATH_TOO_LONG =                 -12;
-	const int DRMP3_NAME_TOO_LONG =                 -13;
-	const int DRMP3_NOT_DIRECTORY =                 -14;
-	const int DRMP3_IS_DIRECTORY =                  -15;
-	const int DRMP3_DIRECTORY_NOT_EMPTY =           -16;
-	const int DRMP3_END_OF_FILE =                   -17;
-	const int DRMP3_NO_SPACE =                      -18;
-	const int DRMP3_BUSY =                          -19;
-	const int DRMP3_IO_ERROR =                      -20;
-	const int DRMP3_INTERRUPT =                     -21;
-	const int DRMP3_UNAVAILABLE =                   -22;
-	const int DRMP3_ALREADY_IN_USE =                -23;
-	const int DRMP3_BAD_ADDRESS =                   -24;
-	const int DRMP3_BAD_SEEK =                      -25;
-	const int DRMP3_BAD_PIPE =                      -26;
-	const int DRMP3_DEADLOCK =                      -27;
-	const int DRMP3_TOO_MANY_LINKS =                -28;
-	const int DRMP3_NOT_IMPLEMENTED =               -29;
-	const int DRMP3_NO_MESSAGE =                    -30;
-	const int DRMP3_BAD_MESSAGE =                   -31;
-	const int DRMP3_NO_DATA_AVAILABLE =             -32;
-	const int DRMP3_INVALID_DATA =                  -33;
-	const int DRMP3_TIMEOUT =                       -34;
-	const int DRMP3_NO_NETWORK =                    -35;
-	const int DRMP3_NOT_UNIQUE =                    -36;
-	const int DRMP3_NOT_SOCKET =                    -37;
-	const int DRMP3_NO_ADDRESS =                    -38;
-	const int DRMP3_BAD_PROTOCOL =                  -39;
-	const int DRMP3_PROTOCOL_UNAVAILABLE =          -40;
-	const int DRMP3_PROTOCOL_NOT_SUPPORTED =        -41;
-	const int DRMP3_PROTOCOL_FAMILY_NOT_SUPPORTED = -42;
-	const int DRMP3_ADDRESS_FAMILY_NOT_SUPPORTED =  -43;
-	const int DRMP3_SOCKET_NOT_SUPPORTED =          -44;
-	const int DRMP3_CONNECTION_RESET =              -45;
-	const int DRMP3_ALREADY_CONNECTED =             -46;
-	const int DRMP3_NOT_CONNECTED =                 -47;
-	const int DRMP3_CONNECTION_REFUSED =            -48;
-	const int DRMP3_NO_HOST =                       -49;
-	const int DRMP3_IN_PROGRESS =                   -50;
-	const int DRMP3_CANCELLED =                     -51;
-	const int DRMP3_MEMORY_ALREADY_MAPPED =         -52;
-	const int DRMP3_AT_END =                        -53;
+	const c_int DRMP3_SUCCESS =                        0;
+	const c_int DRMP3_ERROR =                         -1; /* A generic error. */
+	const c_int DRMP3_INVALID_ARGS =                  -2;
+	const c_int DRMP3_INVALID_OPERATION =             -3;
+	const c_int DRMP3_OUT_OF_MEMORY =                 -4;
+	const c_int DRMP3_OUT_OF_RANGE =                  -5;
+	const c_int DRMP3_ACCESS_DENIED =                 -6;
+	const c_int DRMP3_DOES_NOT_EXIST =                -7;
+	const c_int DRMP3_ALREADY_EXISTS =                -8;
+	const c_int DRMP3_TOO_MANY_OPEN_FILES =           -9;
+	const c_int DRMP3_INVALID_FILE =                  -10;
+	const c_int DRMP3_TOO_BIG =                       -11;
+	const c_int DRMP3_PATH_TOO_LONG =                 -12;
+	const c_int DRMP3_NAME_TOO_LONG =                 -13;
+	const c_int DRMP3_NOT_DIRECTORY =                 -14;
+	const c_int DRMP3_IS_DIRECTORY =                  -15;
+	const c_int DRMP3_DIRECTORY_NOT_EMPTY =           -16;
+	const c_int DRMP3_END_OF_FILE =                   -17;
+	const c_int DRMP3_NO_SPACE =                      -18;
+	const c_int DRMP3_BUSY =                          -19;
+	const c_int DRMP3_IO_ERROR =                      -20;
+	const c_int DRMP3_INTERRUPT =                     -21;
+	const c_int DRMP3_UNAVAILABLE =                   -22;
+	const c_int DRMP3_ALREADY_IN_USE =                -23;
+	const c_int DRMP3_BAD_ADDRESS =                   -24;
+	const c_int DRMP3_BAD_SEEK =                      -25;
+	const c_int DRMP3_BAD_PIPE =                      -26;
+	const c_int DRMP3_DEADLOCK =                      -27;
+	const c_int DRMP3_TOO_MANY_LINKS =                -28;
+	const c_int DRMP3_NOT_IMPLEMENTED =               -29;
+	const c_int DRMP3_NO_MESSAGE =                    -30;
+	const c_int DRMP3_BAD_MESSAGE =                   -31;
+	const c_int DRMP3_NO_DATA_AVAILABLE =             -32;
+	const c_int DRMP3_INVALID_DATA =                  -33;
+	const c_int DRMP3_TIMEOUT =                       -34;
+	const c_int DRMP3_NO_NETWORK =                    -35;
+	const c_int DRMP3_NOT_UNIQUE =                    -36;
+	const c_int DRMP3_NOT_SOCKET =                    -37;
+	const c_int DRMP3_NO_ADDRESS =                    -38;
+	const c_int DRMP3_BAD_PROTOCOL =                  -39;
+	const c_int DRMP3_PROTOCOL_UNAVAILABLE =          -40;
+	const c_int DRMP3_PROTOCOL_NOT_SUPPORTED =        -41;
+	const c_int DRMP3_PROTOCOL_FAMILY_NOT_SUPPORTED = -42;
+	const c_int DRMP3_ADDRESS_FAMILY_NOT_SUPPORTED =  -43;
+	const c_int DRMP3_SOCKET_NOT_SUPPORTED =          -44;
+	const c_int DRMP3_CONNECTION_RESET =              -45;
+	const c_int DRMP3_ALREADY_CONNECTED =             -46;
+	const c_int DRMP3_NOT_CONNECTED =                 -47;
+	const c_int DRMP3_CONNECTION_REFUSED =            -48;
+	const c_int DRMP3_NO_HOST =                       -49;
+	const c_int DRMP3_IN_PROGRESS =                   -50;
+	const c_int DRMP3_CANCELLED =                     -51;
+	const c_int DRMP3_MEMORY_ALREADY_MAPPED =         -52;
+	const c_int DRMP3_AT_END =                        -53;
 	/* End Result Codes */
 
-	const int DRMP3_MAX_PCM_FRAMES_PER_MP3_FRAME =  1152;
-	const int DRMP3_MAX_SAMPLES_PER_FRAME = DRMP3_MAX_PCM_FRAMES_PER_MP3_FRAME * 2;
+	const c_int DRMP3_MAX_PCM_FRAMES_PER_MP3_FRAME =  1152;
+	const c_int DRMP3_MAX_SAMPLES_PER_FRAME = DRMP3_MAX_PCM_FRAMES_PER_MP3_FRAME * 2;
 
 	[CLink] public static extern void drmp3_version(drmp3_uint32* pMajor, drmp3_uint32* pMinor, drmp3_uint32* pRevision);
 	[CLink] public static extern char8* drmp3_version_string();
@@ -191,11 +191,11 @@ public static class DRMp3
 	[CRepr]
 	public struct drmp3dec_frame_info
 	{
-		int frame_bytes;
-		int channels;
-		int hz;
-		int layer;
-		int bitrate_kbp;
+		c_int frame_bytes;
+		c_int channels;
+		c_int hz;
+		c_int layer;
+		c_int bitrate_kbp;
 	};
 
 	[CRepr]
@@ -213,7 +213,7 @@ public static class DRMp3
 	[CLink] public static extern void drmp3dec_init(drmp3dec* dec);
 
 	// /* Reads a frame from a low level decoder. */
-	[CLink] public static extern int drmp3dec_decode_frame(drmp3dec* dec, drmp3_uint8* mp3, int mp3_bytes, void* pcm, drmp3dec_frame_info* info);
+	[CLink] public static extern c_int drmp3dec_decode_frame(drmp3dec* dec, drmp3_uint8* mp3, c_int mp3_bytes, void* pcm, drmp3dec_frame_info* info);
 
 	// /* Helper for converting between f32 and s16. */
 	[CLink] public static extern void drmp3dec_f32_to_s16(float* in_val, drmp3_int16* out_val, size_t num_samples);
@@ -264,7 +264,7 @@ public static class DRMp3
 	Whether or not it is relative to the beginning or current position is determined by the "origin" parameter which
 	will be either drmp3_seek_origin_start or drmp3_seek_origin_current.
 	*/
-	public function drmp3_bool32 drmp3_seek_proc(void* pUserData, int offset, drmp3_seek_origin origin);
+	public function drmp3_bool32 drmp3_seek_proc(void* pUserData, c_int offset, drmp3_seek_origin origin);
 
 	[CRepr]
 	public struct drmp3_config

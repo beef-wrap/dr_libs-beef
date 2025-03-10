@@ -1,8 +1,8 @@
 using System;
 using System.Diagnostics;
-using static DRLibs.DRMp3;
-using static DRLibs.DRWav;
-using static DRLibs.DRFlac;
+using static drlibs.drmp3;
+using static drlibs.drwav;
+using static drlibs.drflac;
 
 namespace example;
 
@@ -17,7 +17,7 @@ class Program
 
 		if (pFlac == null)
 		{
-			Debug.WriteLine("failed to open file");
+			Debug.WriteLine("failed to open flac");
 		} else
 		{
 			drflac_int32* pSamples = (.)Internal.StdMalloc((.)pFlac.totalPCMFrameCount * pFlac.channels * sizeof(drflac_int32));
@@ -35,7 +35,7 @@ class Program
 
 		if (drmp3_init_file(&mp3, "resource/TownTheme.mp3", null) == 0)
 		{
-				// Failed to open file
+			Debug.WriteLine("failed to open mp3");
 		} else
 		{
 			Debug.WriteLine($"{mp3.sampleRate} {mp3.channels}");
@@ -50,8 +50,7 @@ class Program
 		float* pSampleData = drwav_open_file_and_read_pcm_frames_f32("resource/laser1.wav", &channels, &sampleRate, &totalPCMFrameCount, null);
 		if (pSampleData == null)
 		{
-			Debug.WriteLine("error");
-			// Error opening and reading WAV file.
+			Debug.WriteLine("failed to open wav");
 		}
 
 		drwav_free(pSampleData, null);

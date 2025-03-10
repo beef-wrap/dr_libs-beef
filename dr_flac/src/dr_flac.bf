@@ -226,9 +226,9 @@ Notes
 using System;
 using System.Interop;
 
-namespace DRLibs;
+namespace drlibs;
 
-public static class DRFlac
+public static class drflac
 {
 	public typealias size_t            = uint;
 	public typealias ssize_t           = int;
@@ -270,7 +270,7 @@ public static class DRFlac
 	As data is read from the client it is placed into an internal buffer for fast access. This controls the size of that buffer. Larger values means more speed,
 	but also more memory. In my testing there is diminishing returns after about 4KB, but you can fiddle with this to suit your own needs. Must be a multiple of 8.
 	*/
-	const int DR_FLAC_BUFFER_SIZE = 4096;
+	const c_int DR_FLAC_BUFFER_SIZE = 4096;
 
 #if BF_64_BIT
 	typealias drflac_cache_t = drflac_uint64;
@@ -279,37 +279,37 @@ public static class DRFlac
 #endif
 
 	/* The various metadata block types. */
-	const int DRFLAC_METADATA_BLOCK_TYPE_STREAMINFO       = 0;
-	const int DRFLAC_METADATA_BLOCK_TYPE_PADDING          = 1;
-	const int DRFLAC_METADATA_BLOCK_TYPE_APPLICATION      = 2;
-	const int DRFLAC_METADATA_BLOCK_TYPE_SEEKTABLE        = 3;
-	const int DRFLAC_METADATA_BLOCK_TYPE_VORBIS_COMMENT   = 4;
-	const int DRFLAC_METADATA_BLOCK_TYPE_CUESHEET         = 5;
-	const int DRFLAC_METADATA_BLOCK_TYPE_PICTURE          = 6;
-	const int DRFLAC_METADATA_BLOCK_TYPE_INVALID          = 127;
+	const c_int DRFLAC_METADATA_BLOCK_TYPE_STREAMINFO       = 0;
+	const c_int DRFLAC_METADATA_BLOCK_TYPE_PADDING          = 1;
+	const c_int DRFLAC_METADATA_BLOCK_TYPE_APPLICATION      = 2;
+	const c_int DRFLAC_METADATA_BLOCK_TYPE_SEEKTABLE        = 3;
+	const c_int DRFLAC_METADATA_BLOCK_TYPE_VORBIS_COMMENT   = 4;
+	const c_int DRFLAC_METADATA_BLOCK_TYPE_CUESHEET         = 5;
+	const c_int DRFLAC_METADATA_BLOCK_TYPE_PICTURE          = 6;
+	const c_int DRFLAC_METADATA_BLOCK_TYPE_INVALID          = 127;
 
 	/* The various picture types specified in the PICTURE block. */
-	const int DRFLAC_PICTURE_TYPE_OTHER                   = 0;
-	const int DRFLAC_PICTURE_TYPE_FILE_ICON               = 1;
-	const int DRFLAC_PICTURE_TYPE_OTHER_FILE_ICON         = 2;
-	const int DRFLAC_PICTURE_TYPE_COVER_FRONT             = 3;
-	const int DRFLAC_PICTURE_TYPE_COVER_BACK              = 4;
-	const int DRFLAC_PICTURE_TYPE_LEAFLET_PAGE            = 5;
-	const int DRFLAC_PICTURE_TYPE_MEDIA                   = 6;
-	const int DRFLAC_PICTURE_TYPE_LEAD_ARTIST             = 7;
-	const int DRFLAC_PICTURE_TYPE_ARTIST                  = 8;
-	const int DRFLAC_PICTURE_TYPE_CONDUCTOR               = 9;
-	const int DRFLAC_PICTURE_TYPE_BAND                    = 10;
-	const int DRFLAC_PICTURE_TYPE_COMPOSER                = 11;
-	const int DRFLAC_PICTURE_TYPE_LYRICIST                = 12;
-	const int DRFLAC_PICTURE_TYPE_RECORDING_LOCATION      = 13;
-	const int DRFLAC_PICTURE_TYPE_DURING_RECORDING        = 14;
-	const int DRFLAC_PICTURE_TYPE_DURING_PERFORMANCE      = 15;
-	const int DRFLAC_PICTURE_TYPE_SCREEN_CAPTURE          = 16;
-	const int DRFLAC_PICTURE_TYPE_BRIGHT_COLORED_FISH     = 17;
-	const int DRFLAC_PICTURE_TYPE_ILLUSTRATION            = 18;
-	const int DRFLAC_PICTURE_TYPE_BAND_LOGOTYPE           = 19;
-	const int DRFLAC_PICTURE_TYPE_PUBLISHER_LOGOTYPE      = 20;
+	const c_int DRFLAC_PICTURE_TYPE_OTHER                   = 0;
+	const c_int DRFLAC_PICTURE_TYPE_FILE_ICON               = 1;
+	const c_int DRFLAC_PICTURE_TYPE_OTHER_FILE_ICON         = 2;
+	const c_int DRFLAC_PICTURE_TYPE_COVER_FRONT             = 3;
+	const c_int DRFLAC_PICTURE_TYPE_COVER_BACK              = 4;
+	const c_int DRFLAC_PICTURE_TYPE_LEAFLET_PAGE            = 5;
+	const c_int DRFLAC_PICTURE_TYPE_MEDIA                   = 6;
+	const c_int DRFLAC_PICTURE_TYPE_LEAD_ARTIST             = 7;
+	const c_int DRFLAC_PICTURE_TYPE_ARTIST                  = 8;
+	const c_int DRFLAC_PICTURE_TYPE_CONDUCTOR               = 9;
+	const c_int DRFLAC_PICTURE_TYPE_BAND                    = 10;
+	const c_int DRFLAC_PICTURE_TYPE_COMPOSER                = 11;
+	const c_int DRFLAC_PICTURE_TYPE_LYRICIST                = 12;
+	const c_int DRFLAC_PICTURE_TYPE_RECORDING_LOCATION      = 13;
+	const c_int DRFLAC_PICTURE_TYPE_DURING_RECORDING        = 14;
+	const c_int DRFLAC_PICTURE_TYPE_DURING_PERFORMANCE      = 15;
+	const c_int DRFLAC_PICTURE_TYPE_SCREEN_CAPTURE          = 16;
+	const c_int DRFLAC_PICTURE_TYPE_BRIGHT_COLORED_FISH     = 17;
+	const c_int DRFLAC_PICTURE_TYPE_ILLUSTRATION            = 18;
+	const c_int DRFLAC_PICTURE_TYPE_BAND_LOGOTYPE           = 19;
+	const c_int DRFLAC_PICTURE_TYPE_PUBLISHER_LOGOTYPE      = 20;
 
 	[CRepr]
 	public enum drflac_container
@@ -372,7 +372,7 @@ public static class DRFlac
 
 			struct
 			{
-				public int unused;
+				public c_int unused;
 			} padding;
 
 			struct
@@ -480,7 +480,7 @@ public static class DRFlac
 	When seeking to a PCM frame using drflac_seek_to_pcm_frame(), dr_flac may call this with an offset beyond the end of the FLAC stream. This needs to be detected
 	and handled by returning DRFLAC_FALSE.
 	*/
-	public function drflac_bool32 drflac_seek_proc(void* pUserData, int offset, drflac_seek_origin origin);
+	public function drflac_bool32 drflac_seek_proc(void* pUserData, c_int offset, drflac_seek_origin origin);
 
 	/*
 	Callback for when a metadata block is read.

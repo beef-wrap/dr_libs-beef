@@ -12,72 +12,72 @@ Introduction
 ============
 This is a single file library. To use it, do something like the following in one .c file.
 
-    ```c
-    #define DR_WAV_IMPLEMENTATION
-    #include "dr_wav.h"
-    ```
+	```c
+	#define DR_WAV_IMPLEMENTATION
+	#include "dr_wav.h"
+	```
 
 You can then #include this file in other parts of the program as you would with any other header file. Do something like the following to read audio data:
 
-    ```c
-    drwav wav;
-    if (!drwav_init_file(&wav, "my_song.wav", NULL)) {
-        // Error opening WAV file.
-    }
+	```c
+	drwav wav;
+	if (!drwav_init_file(&wav, "my_song.wav", NULL)) {
+		// Error opening WAV file.
+	}
 
-    drwav_int32* pDecodedInterleavedPCMFrames = malloc(wav.totalPCMFrameCount * wav.channels * sizeof(drwav_int32));
-    size_t numberOfSamplesActuallyDecoded = drwav_read_pcm_frames_s32(&wav, wav.totalPCMFrameCount, pDecodedInterleavedPCMFrames);
+	drwav_int32* pDecodedInterleavedPCMFrames = malloc(wav.totalPCMFrameCount * wav.channels * sizeof(drwav_int32));
+	size_t numberOfSamplesActuallyDecoded = drwav_read_pcm_frames_s32(&wav, wav.totalPCMFrameCount, pDecodedInterleavedPCMFrames);
 
-    ...
+	...
 
-    drwav_uninit(&wav);
-    ```
+	drwav_uninit(&wav);
+	```
 
 If you just want to quickly open and read the audio data in a single operation you can do something like this:
 
-    ```c
-    unsigned int channels;
-    unsigned int sampleRate;
-    drwav_uint64 totalPCMFrameCount;
-    float* pSampleData = drwav_open_file_and_read_pcm_frames_f32("my_song.wav", &channels, &sampleRate, &totalPCMFrameCount, NULL);
-    if (pSampleData == NULL) {
-        // Error opening and reading WAV file.
-    }
+	```c
+	unsigned int channels;
+	unsigned int sampleRate;
+	drwav_uint64 totalPCMFrameCount;
+	float* pSampleData = drwav_open_file_and_read_pcm_frames_f32("my_song.wav", &channels, &sampleRate, &totalPCMFrameCount, NULL);
+	if (pSampleData == NULL) {
+		// Error opening and reading WAV file.
+	}
 
-    ...
+	...
 
-    drwav_free(pSampleData, NULL);
-    ```
+	drwav_free(pSampleData, NULL);
+	```
 
 The examples above use versions of the API that convert the audio data to a consistent format (32-bit signed PCM, in this case), but you can still output the
 audio data in its internal format (see notes below for supported formats):
 
-    ```c
-    size_t framesRead = drwav_read_pcm_frames(&wav, wav.totalPCMFrameCount, pDecodedInterleavedPCMFrames);
-    ```
+	```c
+	size_t framesRead = drwav_read_pcm_frames(&wav, wav.totalPCMFrameCount, pDecodedInterleavedPCMFrames);
+	```
 
 You can also read the raw bytes of audio data, which could be useful if dr_wav does not have native support for a particular data format:
 
-    ```c
-    size_t bytesRead = drwav_read_raw(&wav, bytesToRead, pRawDataBuffer);
-    ```
+	```c
+	size_t bytesRead = drwav_read_raw(&wav, bytesToRead, pRawDataBuffer);
+	```
 
 dr_wav can also be used to output WAV files. This does not currently support compressed formats. To use this, look at `drwav_init_write()`,
 `drwav_init_file_write()`, etc. Use `drwav_write_pcm_frames()` to write samples, or `drwav_write_raw()` to write raw data in the "data" chunk.
 
-    ```c
-    drwav_data_format format;
-    format.container = drwav_container_riff;     // <-- drwav_container_riff = normal WAV files, drwav_container_w64 = Sony Wave64.
-    format.format = DR_WAVE_FORMAT_PCM;          // <-- Any of the DR_WAVE_FORMAT_* codes.
-    format.channels = 2;
-    format.sampleRate = 44100;
-    format.bitsPerSample = 16;
-    drwav_init_file_write(&wav, "data/recording.wav", &format, NULL);
+	```c
+	drwav_data_format format;
+	format.container = drwav_container_riff;     // <-- drwav_container_riff = normal WAV files, drwav_container_w64 = Sony Wave64.
+	format.format = DR_WAVE_FORMAT_PCM;          // <-- Any of the DR_WAVE_FORMAT_* codes.
+	format.channels = 2;
+	format.sampleRate = 44100;
+	format.bitsPerSample = 16;
+	drwav_init_file_write(&wav, "data/recording.wav", &format, NULL);
 
-    ...
+	...
 
-    drwav_uint64 framesWritten = drwav_write_pcm_frames(pWav, frameCount, pSamples);
-    ```
+	drwav_uint64 framesWritten = drwav_write_pcm_frames(pWav, frameCount, pSamples);
+	```
 
 Note that writing to AIFF or RIFX is not supported.
 
@@ -138,9 +138,9 @@ Notes
 using System;
 using System.Interop;
 
-namespace DRLibs;
+namespace drlibs;
 
-public static class DRWav
+public static class drwav
 {
 	typealias size_t = uint;
 	typealias ssize_t = int;
