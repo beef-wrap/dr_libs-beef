@@ -181,7 +181,7 @@ public static class drmp3
 		function void* onMalloc(size_t sz, void* pUserData);
 		function void* onRealloc(void* p, size_t sz, void* pUserData);
 		function void  onFree(void* p, void* pUserData);
-	};
+	}
 	/* End Allocation Callbacks */
 
 	/*
@@ -196,7 +196,7 @@ public static class drmp3
 		c_int hz;
 		c_int layer;
 		c_int bitrate_kbp;
-	};
+	}
 
 	[CRepr]
 	public struct drmp3dec
@@ -207,7 +207,7 @@ public static class drmp3
 		c_int free_format_bytes;
 		drmp3_uint8[4] header;
 		drmp3_uint8[511] reserv_buf;
-	};
+	}
 
 	// /* Initializes a low level decoder. */
 	[CLink] public static extern void drmp3dec_init(drmp3dec* dec);
@@ -222,12 +222,11 @@ public static class drmp3
 	Main API (Pull API)
 	===================
 	*/
-	[CRepr]
-	public enum drmp3_seek_origin
+	public enum drmp3_seek_origin : c_int
 	{
 		drmp3_seek_origin_start,
 		drmp3_seek_origin_current
-	};
+	}
 
 	[CRepr]
 	public struct drmp3_seek_point
@@ -236,7 +235,7 @@ public static class drmp3
 		drmp3_uint64 pcmFrameIndex; /* The index of the PCM frame this seek point targets. */
 		drmp3_uint16 mp3FramesToDiscard; /* The number of whole MP3 frames to be discarded before pcmFramesToDiscard. */
 		drmp3_uint16 pcmFramesToDiscard; /* The number of leading samples to read and discard. These are discarded after mp3FramesToDiscard. */
-	};
+	}
 
 	/*
 	Callback for when data is read. Return value is the number of bytes actually read.
@@ -271,7 +270,7 @@ public static class drmp3
 	{
 		drmp3_uint32 channels;
 		drmp3_uint32 sampleRate;
-	};
+	}
 
 	[CRepr]
 	public struct drmp3
@@ -303,8 +302,8 @@ public static class drmp3
 			drmp3_uint8* pData;
 			size_t dataSize;
 			size_t currentReadPos;
-		}; /* Only used for decoders that were opened against a block of memory. */
-	};
+		} /* Only used for decoders that were opened against a block of memory. */
+	}
 
 	/*
 	Initializes an MP3 decoder.

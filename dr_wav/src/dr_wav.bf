@@ -243,25 +243,23 @@ public static class drwav
 		function void* onMalloc(size_t sz, void* pUserData);
 		function void* onRealloc(void* p, size_t sz, void* pUserData);
 		function void onFree(void* p, void* pUserData);
-	};
+	}
 	/* End Allocation Callbacks */
 
-	[CRepr]
-	enum drwav_seek_origin
+	public enum drwav_seek_origin : c_int
 	{
 		drwav_seek_origin_start,
 		drwav_seek_origin_current
-	};
+	}
 
-	[CRepr]
-	enum drwav_container
+	public enum drwav_container : c_int
 	{
 		drwav_container_riff,
 		drwav_container_rifx,
 		drwav_container_w64,
 		drwav_container_rf64,
 		drwav_container_aiff
-	};
+	}
 
 	[CRepr]
 	struct drwav_chunk_header
@@ -280,7 +278,7 @@ public static class drwav
 		W64  = 8 byte alignment.
 		*/
 		uint paddingSize;
-	};
+	}
 
 	[CRepr]
 	struct drwav_fmt
@@ -321,7 +319,7 @@ public static class drwav
 
 		/* The sub-format, exactly as specified by the wave file. */
 		drwav_uint8[16] subFormat;
-	};
+	}
 
 	[CRepr]
 	public static extern drwav_uint16 drwav_fmt_get_format(drwav_fmt* pFMT);
@@ -402,7 +400,7 @@ public static class drwav
 		drwav_uint8* data;
 		size_t dataSize;
 		size_t currentReadPos;
-	};
+	}
 
 	/* Structure for internal use. Only used for writers opened with drwav_init_memory_write(). */
 	[CRepr]
@@ -413,7 +411,7 @@ public static class drwav
 		size_t dataSize;
 		size_t dataCapacity;
 		size_t currentWritePos;
-	};
+	}
 
 	[CRepr]
 	struct drwav_data_format
@@ -423,10 +421,9 @@ public static class drwav
 		drwav_uint32 channels;
 		drwav_uint32 sampleRate;
 		drwav_uint32 bitsPerSample;
-	};
+	}
 
-	[CRepr]
-	enum drwav_metadata_type
+	public enum drwav_metadata_type : c_int
 	{
 		drwav_metadata_type_none                        = 0,
 
@@ -484,7 +481,7 @@ public static class drwav
 
 		drwav_metadata_type_all                         = -2, /*0xFFFFFFFF & ~drwav_metadata_type_unknown,*/
 		drwav_metadata_type_all_including_unknown       = -1 /*0xFFFFFFFF,*/
-	};
+	}
 
 	/*
 	Sampler Metadata
@@ -492,13 +489,12 @@ public static class drwav
 	The sampler chunk contains information about how a sound should be played in the context of a whole
 	audio production, and when used in a sampler. See https://en.wikipedia.org/wiki/Sample-based_synthesis.
 	*/
-	[CRepr]
-	enum drwav_smpl_loop_type
+	public enum drwav_smpl_loop_type : c_int
 	{
 		drwav_smpl_loop_type_forward  = 0,
 		drwav_smpl_loop_type_pingpong = 1,
 		drwav_smpl_loop_type_backward = 2
-	};
+	}
 
 	[CRepr]
 	struct drwav_smpl_loop
@@ -520,7 +516,7 @@ public static class drwav
 
 		/* Number of times to play the loop. 0 means loop infinitely. */
 		drwav_uint32 playCount;
-	};
+	}
 
 	[CRepr]
 	struct drwav_smpl
@@ -550,7 +546,7 @@ public static class drwav
 
 		drwav_smpl_loop* pLoops;
 		drwav_uint8* pSamplerSpecificData;
-	};
+	}
 
 	/*
 	Instrument Metadata
@@ -568,7 +564,7 @@ public static class drwav
 		drwav_int8 highNote; /* 0 to 127 */
 		drwav_int8 lowVelocity; /* 1 to 127 */
 		drwav_int8 highVelocity; /* 1 to 127 */
-	};
+	}
 
 	/*
 	Cue Metadata
@@ -596,29 +592,28 @@ public static class drwav
 
 		/* For uncompressed formats this is the byte offset of the cue point into the audio data. For compressed formats this is relative to the block specified with blockStart. */
 		drwav_uint32 sampleByteOffset;
-	};
+	}
 
 	[CRepr]
 	struct drwav_cue
 	{
 		drwav_uint32 cuePointCount;
 		drwav_cue_point* pCuePoints;
-	};
+	}
 
 	/*
 	Acid Metadata
 
 	This chunk contains some information about the time signature and the tempo of the audio.
 	*/
-	[CRepr]
-	enum drwav_acid_flag
+	public enum drwav_acid_flag : c_int
 	{
 		drwav_acid_flag_one_shot      = 1, /* If this is not set, then it is a loop instead of a one-shot. */
 		drwav_acid_flag_root_note_set = 2,
 		drwav_acid_flag_stretch       = 4,
 		drwav_acid_flag_disk_based    = 8,
 		drwav_acid_flag_acidizer      = 16 /* Not sure what this means. */
-	};
+	}
 
 	[CRepr]
 	struct drwav_acid
@@ -642,7 +637,7 @@ public static class drwav
 
 		/* Beats per minute of the track. Setting a value of 0 suggests that there is no tempo. */
 		float tempo;
-	};
+	}
 
 	/*
 	Cue Label or Note metadata
@@ -662,7 +657,7 @@ public static class drwav
 
 		/* The string. The *init_with_metadata functions null terminate this for convenience. */
 		char8* pString;
-	};
+	}
 
 	/*
 	BEXT metadata, also known as Broadcast Wave Format (BWF)
@@ -702,7 +697,7 @@ public static class drwav
 		drwav_uint16 maxTruePeakLevel; /* Maximum True Peak Level of the file expressed as dBTP (multiplied by 100). */
 		drwav_uint16 maxMomentaryLoudness; /* Highest value of the Momentary Loudness Level of the file in LUFS (multiplied by 100). */
 		drwav_uint16 maxShortTermLoudness; /* Highest value of the Short-Term Loudness Level of the file in LUFS (multiplied by 100). */
-	};
+	}
 
 	/*
 	Info Text Metadata
@@ -719,7 +714,7 @@ public static class drwav
 
 		/* The string. The *init_with_metadata functions null terminate this for convenience. */
 		char8* pString;
-	};
+	}
 
 	/*
 	Labelled Cue Region Metadata
@@ -750,7 +745,7 @@ public static class drwav
 
 		/* The string. The *init_with_metadata functions null terminate this for convenience. */
 		char8* pString;
-	};
+	}
 
 	/*
 	Unknown Metadata
@@ -759,16 +754,15 @@ public static class drwav
 
 	Unknown metadata has a location attached to it. This is because wav files can have a LIST chunk
 	that contains subchunks. These LIST chunks can be one of two types. An adtl list, or an INFO
-	list. This enum is used to specify the location of a chunk that dr_wav currently doesn't support.
+	list. This is used to specify the location of a chunk that dr_wav currently doesn't support.
 	*/
-	[CRepr]
-	enum drwav_metadata_location
+	public enum drwav_metadata_location : c_int
 	{
 		drwav_metadata_location_invalid,
 		drwav_metadata_location_top_level,
 		drwav_metadata_location_inside_info_list,
 		drwav_metadata_location_inside_adtl_list
-	};
+	}
 
 	[CRepr]
 	struct drwav_unknown_metadata
@@ -777,7 +771,7 @@ public static class drwav
 		drwav_metadata_location chunkLocation;
 		drwav_uint32 dataSizeInBytes;
 		drwav_uint8* pData;
-	};
+	}
 
 	/*
 	Metadata is saved as a union of all the supported types.
@@ -798,7 +792,7 @@ public static class drwav
 			drwav_list_info_text infoText; /* Any of the list info types. */
 			drwav_unknown_metadata unknown;
 		} data;
-	};
+	}
 
 	[CRepr]
 	struct drwav
@@ -894,7 +888,7 @@ public static class drwav
 			drwav_bool8 isLE; /* Will be set to true if the audio data is little-endian encoded. */
 			drwav_bool8 isUnsigned; /* Only used for 8-bit samples. When set to true, will be treated as unsigned. */
 		} aiff;
-	};
+	}
 
 
 	/*

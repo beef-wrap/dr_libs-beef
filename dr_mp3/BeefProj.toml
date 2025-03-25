@@ -5,5 +5,9 @@ Name = "dr_mp3"
 TargetType = "BeefLib"
 StartupObject = "dr_mp3.Program"
 
+
 [Configs.Debug.Win64]
-LibPaths = ["$(ProjectDir)/libs/dr_mp3-windows.lib"]
+LibPaths = ["$(ProjectDir)\\libs\\windows\\dr_mp3d.lib"]
+
+[Configs.Release.Win64]
+LibPaths = ["$(ProjectDir)\\libs\\windows\\dr_mp3.lib"]

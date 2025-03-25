@@ -6,4 +6,7 @@ TargetType = "BeefLib"
 StartupObject = "dr_flac.Program"
 
 [Configs.Debug.Win64]
-LibPaths = ["$(ProjectDir)/libs/dr_flac-windows.lib"]
+LibPaths = ["$(ProjectDir)\\libs\\windows\\dr_flacd.lib"]
+
+[Configs.Release.Win64]
+LibPaths = ["$(ProjectDir)\\libs\\windows\\dr_flac.lib"]

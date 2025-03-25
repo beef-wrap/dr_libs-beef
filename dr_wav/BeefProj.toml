@@ -6,4 +6,7 @@ TargetType = "BeefLib"
 StartupObject = "dr_wav.Program"
 
 [Configs.Debug.Win64]
-LibPaths = ["$(ProjectDir)/libs/dr_wav-windows.lib"]
+LibPaths = ["$(ProjectDir)\\libs\\windows\\dr_wavd.lib"]
+
+[Configs.Release.Win64]
+LibPaths = ["$(ProjectDir)\\libs\\windows\\dr_wav.lib"]

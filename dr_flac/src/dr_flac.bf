@@ -263,7 +263,7 @@ public static class drflac
 		public dr_flac_on_malloc onMalloc;
 		public dr_flac_on_realloc onRealloc;
 		public dr_flac_on_free onFree;
-	};
+	}
 	/* End Allocation Callbacks */
 
 	/*
@@ -311,20 +311,18 @@ public static class drflac
 	const c_int DRFLAC_PICTURE_TYPE_BAND_LOGOTYPE           = 19;
 	const c_int DRFLAC_PICTURE_TYPE_PUBLISHER_LOGOTYPE      = 20;
 
-	[CRepr]
-	public enum drflac_container
+	public enum drflac_container : c_int
 	{
 		drflac_container_native,
 		drflac_container_ogg,
 		drflac_container_unknown
-	};
+	}
 
-	[CRepr]
-	public enum drflac_seek_origin
+	public enum drflac_seek_origin : c_int
 	{
 		drflac_seek_origin_start,
 		drflac_seek_origin_current
-	};
+	}
 
 	/* The order of members in this structure is important because we map this directly to the raw data within the SEEKTABLE metadata block. */
 	[CRepr]
@@ -333,7 +331,7 @@ public static class drflac
 		public drflac_uint64 firstPCMFrame;
 		public drflac_uint64 flacFrameOffset; /* The offset from the first byte of the header of the first frame. */
 		public drflac_uint16 pcmFrameCount;
-	};
+	}
 
 	[CRepr]
 	public struct drflac_streaminfo
@@ -347,7 +345,7 @@ public static class drflac
 		public drflac_uint8 bitsPerSample;
 		public drflac_uint64 totalPCMFrameCount;
 		public drflac_uint8[16] md5;
-	};
+	}
 
 	[CRepr]
 	public struct drflac_metadata
@@ -420,7 +418,7 @@ public static class drflac
 				public drflac_uint8* pPictureData;
 			} picture;
 		} data;
-	};
+	}
 
 
 	/*
@@ -1188,7 +1186,7 @@ public static class drflac
 	{
 		public drflac_uint32 countRemaining;
 		public char8* pRunningData;
-	};
+	}
 
 	/*
 	Initializes a vorbis comment iterator. This can be used for iterating over the vorbis comments in a VORBIS_COMMENT
@@ -1208,7 +1206,7 @@ public static class drflac
 	{
 		public drflac_uint32 countRemaining;
 		public char8* pRunningData;
-	};
+	}
 
 	/* The order of members here is important because we map this directly to the raw data within the CUESHEET metadata block. */
 	public struct drflac_cuesheet_track_index
@@ -1216,7 +1214,7 @@ public static class drflac
 		public drflac_uint64 offset;
 		public drflac_uint8 index;
 		public drflac_uint8[3] reserved;
-	};
+	}
 
 	public struct drflac_cuesheet_track
 	{
@@ -1227,7 +1225,7 @@ public static class drflac
 		public drflac_bool8 preEmphasis;
 		public drflac_uint8 indexCount;
 		public drflac_cuesheet_track_index* pIndexPoints;
-	};
+	}
 
 	/*
 	Initializes a cuesheet track iterator. This can be used for iterating over the cuesheet tracks in a CUESHEET metadata
