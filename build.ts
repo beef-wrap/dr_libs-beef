@@ -1,4 +1,4 @@
-import { type Build } from 'xbuild';
+import { type Build } from 'cmake-ts-gen';
 
 const build: Build = {
     common: {
