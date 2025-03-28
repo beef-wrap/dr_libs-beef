@@ -1,0 +1,13 @@
+{
+  "name": "cgltf-beef",
+  "scripts": {
+    "build": "xbuild"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "xbuild": "link:xbuild"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

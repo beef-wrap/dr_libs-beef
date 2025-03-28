@@ -7,7 +7,7 @@ StartupObject = "dr_mp3.Program"
 
 
 [Configs.Debug.Win64]
-LibPaths = ["$(ProjectDir)\\libs\\windows\\dr_mp3d.lib"]
+LibPaths = ["$(ProjectDir)\\libs\\windows\\x64\\dr_mp3_d.lib"]
 
 [Configs.Release.Win64]
-LibPaths = ["$(ProjectDir)\\libs\\windows\\dr_mp3.lib"]
+LibPaths = ["$(ProjectDir)\\libs\\windows\\x64\\dr_mp3.lib"]

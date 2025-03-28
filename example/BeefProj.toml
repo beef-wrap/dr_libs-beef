@@ -6,4 +6,3 @@ Name = "example"
 StartupObject = "example.Program"
 
 [Configs.Debug.Win64]
-CLibType = "DynamicDebug"
